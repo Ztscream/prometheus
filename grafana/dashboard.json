@@ -1,0 +1,156 @@
+{
+    "dashboard": {
+        "id": null,
+        "title": "Prometheus Test Demo Dashboard",
+        "tags": [
+            "prometheus",
+            "spring-boot",
+            "monitoring"
+        ],
+        "style": "dark",
+        "timezone": "browser",
+        "panels": [
+            {
+                "id": 1,
+                "title": "CPU使用率",
+                "type": "graph",
+                "targets": [
+                    {
+                        "expr": "rate(process_cpu_usage[5m]) * 100",
+                        "legendFormat": "CPU使用率 (%)"
+                    }
+                ],
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            {
+                "id": 2,
+                "title": "内存使用率",
+                "type": "graph",
+                "targets": [
+                    {
+                        "expr": "jvm_memory_used_bytes / jvm_memory_max_bytes * 100",
+                        "legendFormat": "堆内存使用率 (%)"
+                    }
+                ],
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 0
+                }
+            },
+            {
+                "id": 3,
+                "title": "HTTP请求QPS",
+                "type": "graph",
+                "targets": [
+                    {
+                        "expr": "rate(http_server_requests_seconds_count[5m])",
+                        "legendFormat": "请求QPS"
+                    }
+                ],
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 8
+                }
+            },
+            {
+                "id": 4,
+                "title": "HTTP请求平均响应时间",
+                "type": "graph",
+                "targets": [
+                    {
+                        "expr": "rate(http_server_requests_seconds_sum[5m]) / rate(http_server_requests_seconds_count[5m])",
+                        "legendFormat": "平均响应时间 (秒)"
+                    }
+                ],
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 8
+                }
+            },
+            {
+                "id": 5,
+                "title": "JVM线程数",
+                "type": "graph",
+                "targets": [
+                    {
+                        "expr": "jvm_threads_live_threads",
+                        "legendFormat": "活跃线程数"
+                    }
+                ],
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 16
+                }
+            },
+            {
+                "id": 6,
+                "title": "GC次数",
+                "type": "graph",
+                "targets": [
+                    {
+                        "expr": "rate(jvm_gc_collection_seconds_count[5m])",
+                        "legendFormat": "GC频率 (次/秒)"
+                    }
+                ],
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 16
+                }
+            },
+            {
+                "id": 7,
+                "title": "HTTP状态码分布",
+                "type": "piechart",
+                "targets": [
+                    {
+                        "expr": "sum(rate(http_server_requests_seconds_count[5m])) by (status)",
+                        "legendFormat": "{{status}}"
+                    }
+                ],
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 24
+                }
+            },
+            {
+                "id": 8,
+                "title": "Pod数量",
+                "type": "stat",
+                "targets": [
+                    {
+                        "expr": "count(kube_pod_info{namespace=\"prometheus-demo\"})",
+                        "legendFormat": "Pod数量"
+                    }
+                ],
+                "gridPos": {
+                    "h": 4,
+                    "w": 6,
+                    "x": 12,
+                    "y": 24
+                }
+            }
+        ],
+        "time": {
+            "from": "now-1h",
+            "to": "now"
+        },
+        "refresh": "10s"
+    }
+}
