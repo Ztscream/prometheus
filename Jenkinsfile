@@ -4,8 +4,8 @@ pipeline {
     // 环境变量管理
     environment {
         HARBOR_REGISTRY = '172.22.83.19:30003'
-        IMAGE_NAME = 'nju01/prometheus-test-demo'
-        GIT_REPO = 'https://gitee.com/grissom_sh/prometheus-test-demo.git'
+        IMAGE_NAME = 'nju05/prometheus'
+        GIT_REPO = 'https://gitee.com/ztsCream/promethus.git'
         NAMESPACE = 'nju05'
         MONITOR_NAMESPACE = 'nju05'
         HARBOR_USER = 'nju05'

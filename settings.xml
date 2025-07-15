@@ -19,7 +19,7 @@
       <id>repo1</id>
       <mirrorOf>central</mirrorOf>
       <name>central repo</name>
-      <url>http://repo1.maven.org/maven2/</url>
+      <url>https://repo1.maven.org/maven2/</url>
     </mirror>
     <mirror>
      <id>aliyunmaven</id>
@@ -47,7 +47,7 @@
             </repository>
             <repository>
                 <id>MavenCentral</id>
-                <url>http://repo1.maven.org/maven2/</url>
+                <url>https://repo1.maven.org/maven2/</url>
             </repository>
             <repository>
                 <id>aliyunmavenApache</id>
